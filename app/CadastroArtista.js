@@ -43,7 +43,7 @@ export default function CadastroArtista() {
 
       <View style={styles.buttonRow}>
         
-        <Button title="Próximo" onPress={() => router.navigate('/TelaArtista')}/>
+        <Button title="Próximo" onPress={() => router.navigate('/PrincipalArtista')}/>
       </View>
 
     </View>

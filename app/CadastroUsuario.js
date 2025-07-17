@@ -6,6 +6,7 @@ import {
   Button,
   StyleSheet,
   Alert,
+  Image
 } from 'react-native';
 import { useRouter } from 'expo-router';
 
@@ -23,7 +24,12 @@ export default function CadastroUsuario() {
 
   return (
 
-    <View>
+    <View style={styles.container}>
+      <Image
+        source={require('./assets/logoWM.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
       <Text style={styles.label}>E-mail:</Text>
       <TextInput style={styles.input} />
 
@@ -34,7 +40,7 @@ export default function CadastroUsuario() {
       <TextInput style={styles.input} />
 
        <View style={styles.buttonRow}>
-          <Button title="Próximo" onPress={() => router.navigate('/TelaUsuario')}/>
+          <Button title="Próximo" onPress={() => router.navigate('/PrincipalUsuario')}/>
        </View>
     </View>
         
@@ -47,6 +53,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#220A34',
+  },
+  logo: {
+    width: 400,
+    height: 400,
+    alignSelf: 'center',
+    marginBottom: 30,
   },
   label: {
     fontSize: 16,

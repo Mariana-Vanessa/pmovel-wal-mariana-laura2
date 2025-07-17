@@ -13,30 +13,9 @@ export default function PrincipalArtista(){
 
 
   return (
-    <View style={styles.container}>
-    
-
-      <Text style={styles.label}>E-mail:</Text>
-      <TextInput style={styles.input} />
-
-      <Text style={styles.label}>Senha:</Text>
-      <TextInput style={styles.input} />
-
-      <Text style={styles.label}>Entrar como:</Text>
-
-      <View style={styles.buttonRow}>
-
-        <Button title="Usuário" onPress={() => router.navigate('/CadastroUsuario')}/>;
-
-        <View style={styles.buttonSpacer} />
-        <Button title="Artista" onPress={() => router.navigate('/CadastroArtista')}/>;
-
-      </View>
-
-      <Text style={styles.label}>Não tem conta?</Text>
-
-      <Button title="Criar uma conta" onPress={handleLogin} />
-    </View>
+    <View style={{backgroundColor: 'white'}}>
+    <Text> Tela Artista</Text>
+</View>
   );
 }
 
