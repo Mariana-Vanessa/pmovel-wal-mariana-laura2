@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { auth } from '../firebase.config';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import {
   View,
   Text,
@@ -13,27 +15,33 @@ import { useRouter } from 'expo-router';
 export default function CadastroArtista() {
   const router = useRouter();
 
-  const [email] = useState('');
-  const [senha] = useState('');
+  const [newEmail, newSetEmail] = useState('');
+  const [newSenha, newSetSenha] = useState('');
   const [telefone] = useState('');
   const [cpf] = useState('');
 
-  const handleLogin = () => {
-    Alert.alert('WMtunes', 
-        `Email: ${email}
-        \nSenha: ${senha}
-        \nTelefone: ${telefone}
-        \nCpf: ${cpf}`);
-  };
-
+  const createUser = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, newEmail, newSenha);
+      const user = userCredential.user;
+      console.log(user);
+      router.navigate('/PrincipalArtista')
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorCode);
+      console.error(errorMessage);
+    }    
+  }
+;
   return (
     <View style={styles.container}>
       
       <Text style={styles.label}>E-mail:</Text>
-      <TextInput style={styles.input} />
+      <TextInput style={styles.input} value={newEmail}onChangeText={a => newSetEmail(a)} />
 
       <Text style={styles.label}>Senha:</Text>
-      <TextInput style={styles.input} />
+      <TextInput style={styles.input} value={newSenha}onChangeText={a => newSetSenha(a)}/>
 
       <Text style={styles.label}>Telefone:</Text>
       <TextInput style={styles.input} />
@@ -43,7 +51,7 @@ export default function CadastroArtista() {
 
       <View style={styles.buttonRow}>
         
-        <Button title="Próximo" onPress={() => router.navigate('/PrincipalArtista')}/>
+        <Button title="Próximo" onPress={createUser}/>
       </View>
 
     </View>
