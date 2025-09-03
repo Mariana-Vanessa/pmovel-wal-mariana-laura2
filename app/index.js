@@ -45,6 +45,8 @@ export default function App() {
       <Text style={styles.label}>Senha:</Text>
       <TextInput style={styles.input} value={senha} onChangeText={a => setSenha(a)} />
 
+      <Button title="Esqueceu a sua senha?" onPress={() => router.navigate('/RecuperarSenha')}/>
+
       <Text style={styles.label}>Entrar como:</Text>
 
       <View style={styles.buttonRow}>
